@@ -14,7 +14,7 @@
 ---
 
 <a id="english"></a>
-# 🇬🇧 English
+# English
 
 ## 1. Overview
 
@@ -53,7 +53,7 @@ The backend uses **C#**, **ASP.NET Core Web API**, and **Entity Framework Core (
 - Track schema changes using **Migrations**.
 - Enforce unique indexes on `StudentCode` and `Email` when configured in `AppDbContext`.
 
-> **Note:** The dashboard and CRUD features depend on the corresponding files and endpoints being present in your current checkout. Validation and duplicate checks in application code do not replace database constraints or production-grade error handling.
+
 
 ## 3. Technology Stack
 
@@ -96,8 +96,6 @@ Browser (HTML / CSS / JavaScript)
 
 ## 5. Repository Structure
 
-The following reflects the **directories and files visible in the project screenshots**. File contents inside `Controllers`, `Data`, `Migrations`, `Models`, and `wwwroot` are not all visible in those screenshots.
-
 ```text
 StudentManagementSystem/
 ├── StudentManagementAPI/
@@ -137,9 +135,7 @@ When implemented following this project's development steps:
 | `StudentManagementAPI/wwwroot/js/app.js` | API calls and UI interactions |
 | `StudentManagementAPI/StudentManagementAPI.http` | Manual HTTP request tests |
 
-> `Database/seed_students.sql` is **not part of the directory listing shown**. It may be added later if you decide to version a sample-data script. Do not assume it already exists.
->
-> The screenshot shows `dotnet-tools.json` at the repository root. A standard **local .NET tool manifest** usually resides at `.config/dotnet-tools.json`; verify the manifest location before using `dotnet tool restore`.
+
 
 ## 6. Requirements
 
@@ -313,7 +309,6 @@ Model validation is handled using **Data Annotations**; EF Core maps the entity 
 | TC07 | PUT existing student | `204 No Content` |
 | TC08 | DELETE existing student | `204 No Content` |
 
-These are **test scenarios**, not a claim that all tests have been run or automated.
 
 ## 11. Future Improvements
 
@@ -325,11 +320,6 @@ These are **test scenarios**, not a claim that all tests have been run or automa
 - Management of courses, grades, and student enrollment.
 - Dashboard visualizations and export features.
 
-## 12. Security and License
-
-This repository is for learning and local demonstration. **Do not deploy write-enabled endpoints publicly without authentication and authorization.** Do not commit real student information or database credentials.
-
-**License:** No open-source license has been specified. Add a `LICENSE` file if you want to permit reuse under a particular license.
 
 ---
 
@@ -373,7 +363,6 @@ Backend sử dụng **C#**, **ASP.NET Core Web API** và **Entity Framework Core
 - Quản lý thay đổi cấu trúc database qua **Migrations**.
 - Tạo chỉ mục unique cho `StudentCode` và `Email` nếu đã cấu hình trong `AppDbContext`.
 
-> **Lưu ý:** Các chức năng giao diện và CRUD chỉ hoạt động khi các file, endpoint tương ứng đã được triển khai trong mã nguồn hiện tại. Việc kiểm tra trùng ở tầng ứng dụng không thay thế ràng buộc database hoặc cơ chế xử lý lỗi đầy đủ cho môi trường production.
 
 ## 3. Công nghệ sử dụng
 
@@ -416,7 +405,7 @@ Trình duyệt (HTML / CSS / JavaScript)
 
 ## 5. Cấu trúc thư mục
 
-Cấu trúc sau khớp với **các thư mục và file nhìn thấy trong ảnh project**. Ảnh chưa hiển thị toàn bộ nội dung bên trong `Controllers`, `Data`, `Migrations`, `Models` và `wwwroot`.
+
 
 ```text
 StudentManagementSystem/
@@ -439,7 +428,6 @@ StudentManagementSystem/
 └── README.md
 ```
 
-**Chú ý:** Các thư mục/file cục bộ như `.git/`, `.vs/`, `bin/`, `obj/`, `*.csproj.user` không liệt kê trong cấu trúc repository vì thông thường cần được loại khỏi Git thông qua `.gitignore`.
 
 ### Vai trò của các file chính
 
@@ -457,9 +445,7 @@ Nếu đã tạo theo các bước phát triển dự án:
 | `StudentManagementAPI/wwwroot/js/app.js` | Tương tác và gọi API |
 | `StudentManagementAPI/StudentManagementAPI.http` | Kiểm thử request thủ công |
 
-> Trong ảnh **chưa có** `Database/seed_students.sql`. Bạn có thể tạo file này sau nếu muốn lưu script dữ liệu mẫu vào repository.
->
-> Ảnh cho thấy `dotnet-tools.json` ở thư mục gốc. Manifest công cụ .NET dạng local thông thường nằm ở `.config/dotnet-tools.json`; hãy kiểm tra vị trí trước khi sử dụng `dotnet tool restore`.
+
 
 ## 6. Yêu cầu môi trường
 
@@ -633,7 +619,7 @@ Sử dụng file `StudentManagementAPI/StudentManagementAPI.http` trong Visual S
 | TC07 | PUT sinh viên tồn tại | `204 No Content` |
 | TC08 | DELETE sinh viên tồn tại | `204 No Content` |
 
-Đây là **các trường hợp kiểm thử đề xuất**, không khẳng định rằng toàn bộ đã được chạy hoặc tự động hóa.
+
 
 ## 11. Hướng phát triển
 
@@ -645,11 +631,7 @@ Sử dụng file `StudentManagementAPI/StudentManagementAPI.http` trong Visual S
 - Quản lý môn học, điểm số và đăng ký môn.
 - Bổ sung biểu đồ thống kê và chức năng xuất dữ liệu.
 
-## 12. Bảo mật và giấy phép
 
-Repository này phục vụ học tập và trình diễn trên máy cá nhân. **Không triển khai công khai API cho phép sửa/xóa dữ liệu nếu chưa có xác thực và phân quyền.** Không đưa dữ liệu sinh viên thật hoặc thông tin đăng nhập database lên GitHub.
-
-**Giấy phép:** Hiện chưa chỉ định giấy phép mã nguồn mở. Có thể thêm file `LICENSE` nếu muốn cho phép người khác sử dụng lại theo giấy phép cụ thể.
 
 ---
 
