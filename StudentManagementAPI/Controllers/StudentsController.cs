@@ -1,5 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using StudentManagementAPI.Data;
 using StudentManagementAPI.Models;
 
 namespace StudentManagementAPI.Controllers
@@ -8,54 +10,35 @@ namespace StudentManagementAPI.Controllers
     [Route("api/[controller]")]
     public class StudentsController : ControllerBase
     {
-        // Temporary in-memory data
-        private static readonly List<Student> Students = new()
+        // Database context
+        private readonly AppDbContext _context;
+
+        // Dependency Injection
+        public StudentsController(AppDbContext context)
         {
-            new Student
-            {
-                Id = 1,
-                StudentCode = "SV001",
-                FullName = "Nguyen Van A",
-                Age = 21,
-                Email = "student1@example.com",
-                Major = "Information Technology",
-                GPA = 3.6
-            },
-            new Student
-            {
-                Id = 2,
-                StudentCode = "SV002",
-                FullName = "Tran Thi B",
-                Age = 20,
-                Email = "student2@example.com",
-                Major = "Computer Science",
-                GPA = 3.8
-            },
-            new Student
-            {
-                Id = 3,
-                StudentCode = "SV003",
-                FullName = "Le Van C",
-                Age = 22,
-                Email = "student3@example.com",
-                Major = "Software Engineering",
-                GPA = 3.2
-            }
-        };
+            _context = context;
+        }
 
         // GET: api/students
         [HttpGet]
-        public ActionResult<IEnumerable<Student>> GetAll()
+        public async Task<ActionResult<IEnumerable<Student>>>
+            GetAll()
         {
-            return Ok(Students);
+            var students = await _context.Students
+                .AsNoTracking()
+                .ToListAsync();
+
+            return Ok(students);
         }
 
         // GET: api/students/1
         [HttpGet("{id:int}")]
-        public ActionResult<Student> GetById(int id)
+        public async Task<ActionResult<Student>>
+            GetById(int id)
         {
-            var student = Students.FirstOrDefault(
-                s => s.Id == id);
+            var student = await _context.Students
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.Id == id);
 
             if (student == null)
             {
