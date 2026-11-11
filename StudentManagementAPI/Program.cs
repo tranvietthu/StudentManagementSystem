@@ -23,6 +23,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // 5. Build application
 var app = builder.Build();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 // 6. Enable OpenAPI in development
 if (app.Environment.IsDevelopment())
 {

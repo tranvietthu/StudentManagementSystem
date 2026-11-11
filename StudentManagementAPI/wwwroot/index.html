@@ -1,0 +1,208 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/app.js" defer></script>
+</head>
+<body>
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon">🎓</span>
+                <div>
+                    <strong>StudentMS</strong>
+                    <small>Management System</small>
+                </div>
+            </div>
+
+            <nav class="navigation">
+                <a href="#dashboard" class="nav-item active">
+                    Dashboard
+                </a>
+                <a href="#students" class="nav-item">
+                    Students
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                ASP.NET Core 10
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content" id="dashboard">
+
+            <header class="topbar">
+                <div>
+                    <h1>Student Dashboard</h1>
+                    <p>Quản lý thông tin sinh viên</p>
+                </div>
+
+                <button id="addStudentBtn"
+                        class="btn btn-primary">
+                    + Thêm sinh viên
+                </button>
+            </header>
+
+            <!-- Statistics -->
+            <section class="stats">
+                <div class="stat-card">
+                    <p>Tổng sinh viên</p>
+                    <h2 id="totalStudents">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>GPA trung bình</p>
+                    <h2 id="averageGpa">0.00</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Số ngành học</p>
+                    <h2 id="totalMajors">0</h2>
+                </div>
+            </section>
+
+            <!-- Students table -->
+            <section class="table-card" id="students">
+                <div class="section-header">
+                    <div>
+                        <h2>Danh sách sinh viên</h2>
+                        <p>Dữ liệu từ SQL Server 2022</p>
+                    </div>
+
+                    <input type="search"
+                           id="searchInput"
+                           placeholder="Tìm kiếm sinh viên...">
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Mã SV</th>
+                                <th>Họ và tên</th>
+                                <th>Tuổi</th>
+                                <th>Email</th>
+                                <th>Ngành</th>
+                                <th>GPA</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentsTable">
+                            <tr>
+                                <td colspan="8">
+                                    Đang tải dữ liệu...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Student form dialog -->
+    <dialog id="studentDialog" class="student-dialog">
+        <form id="studentForm">
+            <div class="form-header">
+                <h2 id="formTitle">Thêm sinh viên</h2>
+                <button type="button"
+                        id="closeDialogBtn"
+                        class="close-btn"
+                        aria-label="Đóng">
+                    &times;
+                </button>
+            </div>
+
+            <input type="hidden" id="studentId">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="studentCode">
+                        Mã sinh viên
+                    </label>
+                    <input type="text"
+                           id="studentCode"
+                           maxlength="20"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">
+                        Họ và tên
+                    </label>
+                    <input type="text"
+                           id="fullName"
+                           maxlength="100"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Tuổi</label>
+                    <input type="number"
+                           id="age"
+                           min="16"
+                           max="100"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email"
+                           id="email"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="major">Ngành học</label>
+                    <input type="text"
+                           id="major"
+                           maxlength="100"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gpa">GPA (0 - 4)</label>
+                    <input type="number"
+                           id="gpa"
+                           min="0"
+                           max="4"
+                           step="0.01"
+                           required>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button"
+                        id="cancelBtn"
+                        class="btn btn-secondary">
+                    Hủy
+                </button>
+
+                <button type="submit"
+                        id="saveBtn"
+                        class="btn btn-primary">
+                    Lưu sinh viên
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Notification -->
+    <div id="toast"
+         class="toast"
+         role="status"
+         aria-live="polite"></div>
+</body>
+</html>
